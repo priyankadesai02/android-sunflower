@@ -1,11 +1,10 @@
 pipeline {
-         agent none
+         agent any
          stages {
                  stage('build') {
-				 agent{label 'gradle'}
-                 steps {
-					sh "gradle clean build --stacktrace"
-                     echo 'Hi, this is Zulaikha from edureka'
+				 steps {
+					sh "./gradlew clean assemble"
+                     echo 'Hi, this is Priyanka'
 					}
 								}
                  
