@@ -1,26 +1,14 @@
 pipeline {
-         agent any
+         agent none
          stages {
-                 stage('One') {
+                 stage('build') {
+				 agent{label 'gradle'}
                  steps {
+					sh "gradle clean build --stacktrace"
                      echo 'Hi, this is Zulaikha from edureka'
+					}
+								}
+                 
                  }
-                 }
-                 stage('Two') {
-                 steps {
-                    input('Do you want to proceed?')
-                 }
-                 }
-                 stage('Three') {
-                 when {
-                       not {
-                            branch "master"
-                       }
-                 }
-                 steps {
-                       echo "Hello"
-                 }
-                 }
-				 }
 		}
                  
