@@ -1,13 +1,11 @@
-pipeline {
-         agent any
-         stages {
-                 stage('build') {
-				 steps {
-					sh "./gradlew clean assemble"
-                     echo 'Hi, this is Priyanka'
-					}
-								}
-                 
-                 }
-		}
-                 
+node("android"){
+  stage("Checkout"){
+    checkout scm
+  }
+
+  stage("Build"){
+    sh 'chmod +x ./gradlew'
+    
+      sh './gradlew clean assembleDebug' // builds app/build/outputs/apk/app-debug.apk
+    }
+  }
